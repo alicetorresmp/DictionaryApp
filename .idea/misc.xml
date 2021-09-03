@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/A/DictionaryApp/app/src/main/res/drawable/edit_text_background.xml" value="0.2890625" />
+        <entry key="..\:/A/DictionaryApp/app/src/main/res/layout-v21/activity_main.xml" value="0.27291666666666664" />
         <entry key="..\:/A/DictionaryApp/app/src/main/res/layout/activity_definition.xml" value="0.25" />
-        <entry key="..\:/A/DictionaryApp/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/A/DictionaryApp/app/src/main/res/layout/activity_main.xml" value="0.33" />
       </map>
     </option>
   </component>

@@ -17,5 +17,7 @@ class DefinitionActivity : AppCompatActivity() {
         setContentView(view)
 
         binding.definitionTextView.text = intent.getStringExtra(KEY)
+
+        binding.backImageView.setOnClickListener{finish()}
     }
 }
