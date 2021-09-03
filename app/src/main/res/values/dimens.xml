@@ -3,5 +3,5 @@
     <dimen name="margin_eight">8dp</dimen>
     <dimen name="padding_eight">8dp</dimen>
     <dimen name="arrow_dimen">74dp</dimen>
-    <dimen name="text_size_16">16dp</dimen>
+    <dimen name="text_size_16">16sp</dimen>
 </resources>
