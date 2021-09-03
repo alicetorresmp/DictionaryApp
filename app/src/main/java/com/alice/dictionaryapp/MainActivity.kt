@@ -6,14 +6,13 @@ import android.os.Bundle
 import android.widget.Toast
 import com.alice.dictionaryapp.databinding.ActivityMainBinding
 import com.android.volley.Request
-import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONArray
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
 
     private val KEY = "WORD_DEFINITION"
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,17 +23,18 @@ class MainActivity : AppCompatActivity() {
 
         val queue = Volley.newRequestQueue(this)
 
+        val url = getUrl()
         binding.findButton.setOnClickListener {
-            val word = binding.wordEditText.text
-            val apiKey = "75908353-c571-4e31-bd82-bc2552e570df"
-            val url =
-                "https://dictionaryapi.com/api/v3/references/learners/json/$word?key=$apiKey"
 
             val stringRequest = StringRequest(Request.Method.GET, url,
-                { response ->
-                    extractDefinitionFromJson(response)
+                {response ->
+                    try {
+                        extractDefinitionFromJson(response)
+                    }catch (exception : Exception){
+                        exception.printStackTrace()
+                    }
                 },
-                { error ->
+                {error ->
                     Toast.makeText(this, error.message, Toast.LENGTH_SHORT).show()
                 }
             )
@@ -42,8 +42,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun extractDefinitionFromJson(response: String) {
+    private fun getUrl(): String {
+        val word = binding.wordEditText.text
+        val apiKey = "75908353-c571-4e31-bd82-bc2552e570df"
+        return "https://dictionaryapi.com/api/v3/references/learners/json/$word?key=$apiKey"
+    }
 
+    private fun extractDefinitionFromJson(response: String) {
         val jsonArray = JSONArray(response)
         val firstIndex = jsonArray.getJSONObject(0)
         val getShortDefinition = firstIndex.getJSONArray("shortdef")
